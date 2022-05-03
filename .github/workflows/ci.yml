@@ -202,6 +202,10 @@ jobs:
           REDWOOD_DISABLE_TELEMETRY: 1
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
+      - name: 🐛 Debug
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+
       - name: 🎭 Install playwright dependencies
         run: npx playwright install --with-deps chromium
 
